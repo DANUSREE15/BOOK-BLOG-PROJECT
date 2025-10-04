@@ -1,0 +1,131 @@
+<html>
+	<head>
+		<title>Blog Home</title>
+		 <!-- Favicons -->
+  <link href="{{url_for('static',filename='assets/img/favicon.png')}}" rel="icon">
+  <link href="{{url_for('static',filename='assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">	
+
+  <!-- Google Fonts -->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <!--ICON LINK --- -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.css'>
+
+  <!-- Vendor CSS Files -->
+  <link href="{{url_for('static',filename='assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{url_for('static',filename='assets/css/style.css')}}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Dewi
+  * Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+	</head>
+<body>
+
+	 <header id="header" class="fixed-top " style='background-color: #31b9ea;
+background-image: linear-gradient(0deg, #31b9ea 0%, #80eab9 100%);
+);
+'>
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo" style='color:white'>
+	  <a href="index.html" class="logo">
+	  <a href="index.html">
+	  <img src="{{url_for('static',filename='assets/img/home-1-rev-3.png')}}" alt="" class="img-fluid"></a>PAGE TURNER HEAVEN
+	  </a>
+	  </h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+	  
+	  
+	   <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="/home" style='color:black'>Home</a></li>
+          <li><a class="nav-link scrollto" href="/addblog" style='color:black'>Add Blog</a></li>
+          <li><a class="nav-link scrollto" href="/home" style='color:black'>Logout</a></li>
+          <!--<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+          <li><a class="nav-link scrollto" href="#team">Team</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>-->
+          <!--<li><a class="getstarted scrollto" href="#about">Get Started</a></li>-->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->	
+  
+	<div class="container-fluid" style='margin-top:4%;background-color: #31b9ea;background-image:linear-gradient(0deg, #31b9ea 0%, #80eab9 100%);'>
+          <div class="row">
+		   {% for row in datas %}
+            <div class="col-md-4" style='margin-top:4%'>
+              <div class="card" style='width:85%;box-shadow:2px 2px 10px 2px white'>
+                <img class="card-img-top">
+					<img src='{{url_for("static",filename="images/"+row.bimage)}}' class='card-img-top' height='300px'>
+                <div class="card-body">
+				<h4 style='color:#034e48'><img src='{{url_for("static",filename="images/"+row.bimage)}}' class='rounded-circle' style='width:13%;height:50px'>&nbsp;&nbsp;{{row.rname}}</h4>
+				<hr style='color:blue'>
+                 <h3>Date   :  {{row.bdate}}</h3>
+				<h3 style='color:'>Description : {{row.bdesc}}</h3>
+
+				<a href='{{url_for("text_comment",bid=row.bid)}}' class='btn btn-info btn-lg'>View</a>
+                    </div>
+                  </div>
+                </div>
+				{% endfor %}
+              </div>
+            </div>
+		
+		<!--<div class='col-md-4'>
+		<div class='row'>
+		<div class='card'>
+		{% for row in datas %}
+				<img src='{{url_for("static",filename="images/"+row.bimage)}}' class='card-img-top' height='100px'></h1>
+		<div class='card-body'>
+				<h2>Date   :  {{row.bdate}}</h2>
+				<p style='color:'>Description : {{row.bdesc}}</p>
+				<a href='{{url_for("text_comment",bid=row.bid)}}' class='btn btn-info'>View Comment</a>
+		</div>
+		{% endfor %}
+	</div>
+	</div>-->
+	
+
+	
+
+	<!--<div class='card' style='margin-top:8%;margin-left:5%;margin-right:5%'>
+	 {% for row in datas %}
+				<h1 style='margin-top:2%;width:30%'><img src='{{url_for("static",filename="images/"+row.bimage)}}' style='width:450px;height:60%' ></h1>
+				<div class='card-body'>
+				<h2>Date   :  {{row.bdate}}</h2>
+				<p style='color:'>Description : {{row.bdesc}}</p>
+				<a href='{{url_for("view_comments",bid=row.bid)}}' class='btn btn-info'>View Comment</a>
+				{% endfor %}
+	</div>
+	</div>
+	</div>-->
+	
+	
+<!-- Vendor JS Files -->
+  <script src="{{url_for('static',filename='assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+  <script src="{{url_for('static',filename='assets/vendor/php-email-form/validate.js')}}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{url_for('static',filename='assets/js/main.js')}}"></script>
+	 </body>
+	</html>
